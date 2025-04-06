@@ -3,20 +3,22 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
-import PortfolioSection from "@/components/PortfolioSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import MobileNavigation from "@/components/MobileNavigation";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-minecraft-black">
+    <div className="min-h-screen bg-minecraft-black overflow-x-hidden">
       <Navbar />
       <main>
         <HeroSection />
         <AboutSection />
         <ServicesSection />
-        <PortfolioSection />
+        <ProjectsSection />
+        <TestimonialsSection />
         <ContactSection />
       </main>
       <Footer />

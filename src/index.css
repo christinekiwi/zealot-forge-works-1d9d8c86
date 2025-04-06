@@ -34,8 +34,19 @@
     scroll-behavior: smooth;
   }
 
+  html {
+    font-size: 16px;
+  }
+
+  @media (max-width: 640px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
   body {
     @apply bg-minecraft-black text-foreground antialiased overflow-x-hidden;
+    width: 100%;
   }
 
   .glow {
@@ -47,7 +58,7 @@
   }
 
   .nav-link {
-    @apply relative text-lg font-medium text-white/80 hover:text-white transition-colors duration-200;
+    @apply relative text-base lg:text-lg font-medium text-white/80 hover:text-white transition-colors duration-200;
   }
 
   .nav-link::after {
@@ -71,7 +82,7 @@
   }
   
   .service-card {
-    @apply relative overflow-hidden rounded-xl p-6 bg-gradient-to-br from-minecraft-black to-secondary border border-white/5 transition-all duration-500;
+    @apply relative overflow-hidden rounded-xl p-4 sm:p-6 bg-gradient-to-br from-minecraft-black to-secondary border border-white/5 transition-all duration-500;
   }
 
   .service-card:hover {
@@ -140,6 +151,20 @@
     transform: translateY(-100vh) translateX(var(--random-x));
     opacity: 0;
   }
+}
+
+/* Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }
 
 /* Hide scrollbar */

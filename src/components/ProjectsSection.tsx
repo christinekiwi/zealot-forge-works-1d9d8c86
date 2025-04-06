@@ -1,0 +1,146 @@
+
+import { useEffect, useRef } from 'react';
+import { Server, Shield, ShoppingCart, Zap } from 'lucide-react';
+
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  delay: number;
+}
+
+const ProjectCard = ({ title, description, icon, delay }: ProjectCardProps) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (cardRef.current) {
+              cardRef.current.style.transitionDelay = `${delay}ms`;
+              cardRef.current.classList.add('animate-fade-in');
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, [delay]);
+
+  return (
+    <div ref={cardRef} className="glass p-6 relative opacity-0" style={{ animation: 'none' }}>
+      <div className="absolute -top-3 -right-3 p-2 bg-minecraft-purple/20 backdrop-blur-sm rounded-full">
+        {icon}
+      </div>
+      <h3 className="text-xl font-semibold mb-3">{title}</h3>
+      <p className="text-white/70">{description}</p>
+    </div>
+  );
+};
+
+const ProjectsSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  const projects = [
+    {
+      title: "Lifesteal Server Setup",
+      description: "Custom Lifesteal SMP server setup with heart-collecting mechanics, custom death system, and balanced progression for engaging gameplay.",
+      icon: <Shield size={20} className="text-minecraft-purple" />
+    },
+    {
+      title: "Survival Server Setup",
+      description: "Feature-rich survival server with custom terrain generation, balanced economy, and unique gameplay mechanics for a fresh survival experience.",
+      icon: <Server size={20} className="text-minecraft-purple" />
+    },
+    {
+      title: "Shop Survival Configuration",
+      description: "Comprehensive shop system with dynamic pricing, custom GUI interfaces, and seamless integration with server economy for a balanced player experience.",
+      icon: <ShoppingCart size={20} className="text-minecraft-purple" />
+    },
+    {
+      title: "Optimization & Performance",
+      description: "Server performance enhancement package with lag elimination, TPS optimization, and memory management for smooth gameplay even with high player counts.",
+      icon: <Zap size={20} className="text-minecraft-purple" />
+    }
+  ];
+
+  return (
+    <section
+      id="projects"
+      ref={sectionRef}
+      className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 opacity-0 relative overflow-hidden"
+      style={{ transitionDelay: '100ms' }}
+    >
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-block px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-4">
+            <p className="text-sm font-medium text-white/80">Projects</p>
+          </div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-4">
+            Featured <span className="text-minecraft-purple">Work</span>
+          </h2>
+          <p className="text-white/70 max-w-2xl mx-auto text-sm sm:text-base">
+            Check out some of my recent Minecraft server projects and configurations
+          </p>
+        </div>
+
+        {/* 3D Anime Character */}
+        <div className="absolute right-0 bottom-1/4 md:right-10 md:bottom-1/3 w-20 h-20 sm:w-32 sm:h-32 md:w-48 md:h-48 opacity-80 animate-float" style={{ animationDelay: "2s" }}>
+          <img 
+            src="/lovable-uploads/ef54aa99-66b6-4102-a3a2-ddebea05dfca.png" 
+            alt="Anime character" 
+            className="w-full h-full object-contain"
+          />
+        </div>
+
+        <div className="grid sm:grid-cols-2 gap-6">
+          {projects.map((project, index) => (
+            <ProjectCard 
+              key={index}
+              title={project.title}
+              description={project.description}
+              icon={project.icon}
+              delay={100 * (index + 1)}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ProjectsSection;

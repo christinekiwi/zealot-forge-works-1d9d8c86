@@ -1,17 +1,9 @@
 
-import { useEffect, useRef, useState } from 'react';
-import { Github, Mail, MessageSquare, Send } from 'lucide-react';
-import { toast } from '@/components/ui/use-toast';
+import { useEffect, useRef } from 'react';
+import { Github, Mail, MessageSquare } from 'lucide-react';
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const formRef = useRef<HTMLFormElement>(null);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,186 +28,94 @@ const ContactSection = () => {
     };
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
-      
-      setFormData({
-        name: '',
-        email: '',
-        message: '',
-      });
-      
-      setIsSubmitting(false);
-    }, 1500);
-  };
-
   return (
     <section
       id="contact"
       ref={sectionRef}
-      className="py-24 px-6 md:px-12 opacity-0"
+      className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 opacity-0 relative overflow-hidden"
       style={{ transitionDelay: '100ms' }}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <div className="inline-block px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-4">
             <p className="text-sm font-medium text-white/80">Contact</p>
           </div>
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-4">
             Let's <span className="text-minecraft-purple">Connect</span>
           </h2>
-          <p className="text-white/70 max-w-2xl mx-auto">
+          <p className="text-white/70 max-w-2xl mx-auto text-sm sm:text-base">
             Have a project in mind or just want to say hello? I'm always open to discussing
             new opportunities and ideas.
           </p>
         </div>
+        
+        {/* 3D Anime Character */}
+        <div className="absolute left-0 bottom-1/4 md:left-10 md:bottom-1/3 w-20 h-20 sm:w-32 sm:h-32 md:w-48 md:h-48 opacity-80 animate-float" style={{ animationDelay: "1.5s" }}>
+          <img 
+            src="/lovable-uploads/68d0f679-4246-40e9-ada3-f603c7a18ec3.png" 
+            alt="Anime character" 
+            className="w-full h-full object-contain"
+          />
+        </div>
 
-        <div className="flex flex-col lg:flex-row gap-12">
-          <div className="lg:w-1/2">
-            <div className="glass p-8 h-full">
-              <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
-              
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="p-3 rounded-full bg-minecraft-purple/20">
-                    <Mail size={20} className="text-minecraft-purple" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm uppercase text-white/50 mb-1">Email</h4>
-                    <a 
-                      href="mailto:contact@zealot.dev" 
-                      className="text-white hover:text-minecraft-purple transition-colors"
-                    >
-                      contact@zealot.dev
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="p-3 rounded-full bg-minecraft-purple/20">
-                    <MessageSquare size={20} className="text-minecraft-purple" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm uppercase text-white/50 mb-1">Discord</h4>
-                    <p className="text-white">zealot#1234</p>
-                  </div>
-                </div>
+        <div className="glass p-8 md:p-12 max-w-3xl mx-auto">
+          <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
+          
+          <div className="space-y-8">
+            <div className="flex items-start space-x-4">
+              <div className="p-3 rounded-full bg-minecraft-purple/20">
+                <Mail size={24} className="text-minecraft-purple" />
               </div>
-              
-              <div className="mt-12">
-                <h3 className="text-xl font-semibold mb-6">Connect With Me</h3>
-                <div className="flex space-x-4">
-                  <a 
-                    href="https://github.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-minecraft-purple/50 text-white/70 hover:text-minecraft-purple transition-all"
-                    aria-label="GitHub"
-                  >
-                    <Github size={24} />
-                  </a>
-                  <a 
-                    href="https://discord.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-minecraft-purple/50 text-white/70 hover:text-minecraft-purple transition-all"
-                    aria-label="Discord"
-                  >
-                    <MessageSquare size={24} />
-                  </a>
-                  <a 
-                    href="mailto:contact@zealot.dev"
-                    className="p-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-minecraft-purple/50 text-white/70 hover:text-minecraft-purple transition-all"
-                    aria-label="Email"
-                  >
-                    <Mail size={24} />
-                  </a>
-                </div>
+              <div>
+                <h4 className="text-sm uppercase text-white/50 mb-1">Email</h4>
+                <a 
+                  href="mailto:contact@zealot.dev" 
+                  className="text-white hover:text-minecraft-purple transition-colors text-lg"
+                >
+                  contact@zealot.dev
+                </a>
+              </div>
+            </div>
+            
+            <div className="flex items-start space-x-4">
+              <div className="p-3 rounded-full bg-minecraft-purple/20">
+                <MessageSquare size={24} className="text-minecraft-purple" />
+              </div>
+              <div>
+                <h4 className="text-sm uppercase text-white/50 mb-1">Discord</h4>
+                <p className="text-white text-lg">zealot#1234</p>
               </div>
             </div>
           </div>
           
-          <div className="lg:w-1/2">
-            <div className="glass p-8">
-              <h3 className="text-xl font-semibold mb-6">Send Me a Message</h3>
-              
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="text-sm uppercase text-white/50 mb-1 block">
-                    Your Name <span className="text-minecraft-purple">*</span>
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-minecraft-purple/50 transition-colors"
-                    placeholder="John Doe"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="text-sm uppercase text-white/50 mb-1 block">
-                    Your Email <span className="text-minecraft-purple">*</span>
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-minecraft-purple/50 transition-colors"
-                    placeholder="john@example.com"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="text-sm uppercase text-white/50 mb-1 block">
-                    Your Message <span className="text-minecraft-purple">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={5}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-minecraft-purple/50 transition-colors resize-none"
-                    placeholder="Tell me about your project or inquiry..."
-                  ></textarea>
-                </div>
-                
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full flex items-center justify-center px-6 py-3 bg-minecraft-purple hover:bg-minecraft-purple/90 text-white font-medium rounded-lg transition-colors disabled:opacity-70"
-                >
-                  {isSubmitting ? (
-                    <span>Sending...</span>
-                  ) : (
-                    <>
-                      <Send size={18} className="mr-2" />
-                      <span>Send Message</span>
-                    </>
-                  )}
-                </button>
-              </form>
+          <div className="mt-12">
+            <h3 className="text-xl font-semibold mb-6">Connect With Me</h3>
+            <div className="flex space-x-4">
+              <a 
+                href="https://github.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-minecraft-purple/50 text-white/70 hover:text-minecraft-purple transition-all"
+                aria-label="GitHub"
+              >
+                <Github size={28} />
+              </a>
+              <a 
+                href="https://discord.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-minecraft-purple/50 text-white/70 hover:text-minecraft-purple transition-all"
+                aria-label="Discord"
+              >
+                <MessageSquare size={28} />
+              </a>
+              <a 
+                href="mailto:contact@zealot.dev"
+                className="p-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-minecraft-purple/50 text-white/70 hover:text-minecraft-purple transition-all"
+                aria-label="Email"
+              >
+                <Mail size={28} />
+              </a>
             </div>
           </div>
         </div>
