@@ -1,51 +1,22 @@
 
 import { useEffect, useRef } from 'react';
-import { Server, Puzzle, Globe, Code, Zap, Bug, Shield } from 'lucide-react';
+import { Server, Bot, Settings, Zap, Code, Shield } from 'lucide-react';
 
 interface ServiceCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
-  delay: number;
 }
 
-const ServiceCard = ({ title, description, icon, delay }: ServiceCardProps) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (cardRef.current) {
-              cardRef.current.style.transitionDelay = `${delay}ms`;
-              cardRef.current.classList.add('animate-fade-in');
-            }
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
-    return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
-      }
-    };
-  }, [delay]);
-
+const ServiceCard = ({ title, description, icon }: ServiceCardProps) => {
   return (
-    <div ref={cardRef} className="service-card opacity-0" style={{ animation: 'none' }}>
-      <div className="flex flex-col h-full">
-        <div className="p-3 rounded-xl bg-minecraft-purple/20 backdrop-blur-sm w-fit mb-4">
+    <div className="bg-gray-800/80 border border-gray-700 rounded-lg p-6 transition-all duration-300 hover:border-minecraft-purple/50 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)]">
+      <div className="flex flex-col h-full items-center text-center">
+        <div className="mb-5 text-minecraft-purple">
           {icon}
         </div>
-        <h3 className="text-xl font-semibold mb-3">{title}</h3>
-        <p className="text-white/70">{description}</p>
+        <h3 className="text-xl font-bold mb-3">{title}</h3>
+        <p className="text-gray-400">{description}</p>
       </div>
     </div>
   );
@@ -86,59 +57,46 @@ const ServicesSection = () => {
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8 sm:mb-12">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-4">
-            <p className="text-sm font-medium text-white/80">Services</p>
-          </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-4">
-            What I <span className="text-minecraft-purple">Offer</span>
+            My <span className="text-minecraft-purple">Services</span>
           </h2>
-          <p className="text-white/70 max-w-2xl mx-auto text-sm sm:text-base">
-            Specialized services for Minecraft development and modern web solutions,
-            tailored to your specific needs and requirements.
-          </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <ServiceCard
-            title="Minecraft Server Setup"
-            description="Complete server setup from scratch, including configuration, plugin installation, and optimization for different server types like SMP, Factions, or Skyblock."
-            icon={<Server size={24} className="text-minecraft-purple" />}
-            delay={100}
+            title="Server Setup"
+            description="Full Minecraft server setup from scratch with performance tuning and essential plugins configuration."
+            icon={<Server size={48} />}
           />
           
           <ServiceCard
-            title="Plugin Configuration"
-            description="Expert configuration of plugins to work seamlessly together, creating a balanced and engaging player experience with custom features."
-            icon={<Puzzle size={24} className="text-minecraft-purple" />}
-            delay={200}
+            title="Discord Bot Development"
+            description="Custom Discord bots to connect your community with your Minecraft server, including moderation and minigames."
+            icon={<Bot size={48} />}
           />
           
           <ServiceCard
-            title="Performance Tuning"
-            description="Optimize your server for maximum performance with minimal lag, even with high player counts. Includes TPS optimization, memory management, and chunk loading improvements."
-            icon={<Zap size={24} className="text-minecraft-purple" />}
-            delay={300}
+            title="Server Configuration"
+            description="Optimize your existing server with proper configurations for maximum performance and player experience."
+            icon={<Settings size={48} />}
           />
           
           <ServiceCard
-            title="Bug Fixing & Troubleshooting"
-            description="Diagnose and resolve server crashes, plugin conflicts, and performance issues. Complete analysis with practical solutions to keep your server running smoothly."
-            icon={<Bug size={24} className="text-minecraft-purple" />}
-            delay={400}
+            title="Performance Optimization"
+            description="Diagnose and resolve lag issues, optimize chunk loading, and improve overall server performance."
+            icon={<Zap size={48} />}
           />
 
           <ServiceCard
-            title="Custom Server Types"
-            description="Specialized setups for various server types including Factions, Skyblock, Survival Games, and more - with tailored plugins and configurations for each."
-            icon={<Shield size={24} className="text-minecraft-purple" />}
-            delay={500}
+            title="Plugin Development"
+            description="Custom plugin development to add unique features tailored to your server's specific needs."
+            icon={<Code size={48} />}
           />
           
           <ServiceCard
-            title="Web Dashboard Development"
-            description="Custom web interfaces for your Minecraft server. Player stats, shop systems, and admin panels built with modern technologies for a seamless user experience."
-            icon={<Globe size={24} className="text-minecraft-purple" />}
-            delay={600}
+            title="Security Implementation"
+            description="Comprehensive security measures to protect your server from attacks, exploits, and unauthorized access."
+            icon={<Shield size={48} />}
           />
         </div>
       </div>

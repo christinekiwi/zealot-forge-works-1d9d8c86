@@ -116,6 +116,22 @@
   .social-icon {
     @apply w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-minecraft-purple/20 hover:border-minecraft-purple/50 transition-all duration-300;
   }
+
+  /* Animation */
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
 }
 
 /* Particles animation */
