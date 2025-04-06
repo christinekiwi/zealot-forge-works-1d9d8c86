@@ -1,6 +1,8 @@
 
 import { useEffect, useRef } from 'react';
 import { Star, Quote } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface TestimonialCardProps {
   content: string;
@@ -42,7 +44,7 @@ const TestimonialCard = ({ content, author, role, rating, delay }: TestimonialCa
   return (
     <div 
       ref={cardRef} 
-      className="glass p-6 relative opacity-0"
+      className="glass p-6 relative opacity-0 h-full"
       style={{ animation: 'none' }}
     >
       <div className="absolute -top-3 -left-3 p-2 bg-minecraft-purple/20 backdrop-blur-sm rounded-full">
@@ -51,7 +53,7 @@ const TestimonialCard = ({ content, author, role, rating, delay }: TestimonialCa
       
       <p className="text-white/80 mb-4">{content}</p>
       
-      <div className="flex flex-wrap items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between mt-auto">
         <div>
           <h4 className="font-semibold">{author}</h4>
           <p className="text-sm text-white/60">{role}</p>
@@ -73,6 +75,7 @@ const TestimonialCard = ({ content, author, role, rating, delay }: TestimonialCa
 
 const TestimonialsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -116,6 +119,18 @@ const TestimonialsSection = () => {
       role: "Admin Team",
       rating: 4
     },
+    {
+      content: "Impressive work with our permissions system. Everything is now perfectly organized, and our staff can easily manage their responsibilities without any confusion.",
+      author: "PixelWarrior",
+      role: "Network Owner",
+      rating: 5
+    },
+    {
+      content: "The custom plugin tweaks made our server unique and players love the new features. Zealot's coding skills are top-notch and the documentation provided was excellent.",
+      author: "CubeCrafter",
+      role: "Developer",
+      rating: 5
+    }
   ];
 
   return (
@@ -147,18 +162,42 @@ const TestimonialsSection = () => {
           />
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard 
-              key={index}
-              content={testimonial.content}
-              author={testimonial.author}
-              role={testimonial.role}
-              rating={testimonial.rating}
-              delay={100 * (index + 1)}
-            />
-          ))}
-        </div>
+        {isMobile ? (
+          <Carousel className="w-full">
+            <CarouselContent>
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="md:basis-1/1">
+                  <div className="p-1">
+                    <TestimonialCard 
+                      content={testimonial.content}
+                      author={testimonial.author}
+                      role={testimonial.role}
+                      rating={testimonial.rating}
+                      delay={100 * (index + 1)}
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-center gap-2 mt-4">
+              <CarouselPrevious className="relative static translate-y-0 left-0" />
+              <CarouselNext className="relative static translate-y-0 right-0" />
+            </div>
+          </Carousel>
+        ) : (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard 
+                key={index}
+                content={testimonial.content}
+                author={testimonial.author}
+                role={testimonial.role}
+                rating={testimonial.rating}
+                delay={100 * (index + 1)}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

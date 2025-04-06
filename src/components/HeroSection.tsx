@@ -25,7 +25,7 @@ const HeroSection = () => {
             </p>
           </div>
           
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight">
             I'm <span className="text-minecraft-purple">Zealot</span> — <br className="hidden md:block" />
             Crafting Digital <br className="hidden md:block" />
             Experiences
@@ -52,10 +52,10 @@ const HeroSection = () => {
               className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white font-medium rounded-lg transition-all"
               onClick={(e) => {
                 e.preventDefault();
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              Get In Touch
+              See Services
             </a>
           </div>
 

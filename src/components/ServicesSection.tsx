@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { Server, Puzzle, Globe, Code } from 'lucide-react';
+import { Server, Puzzle, Globe, Code, Zap, Bug, Shield } from 'lucide-react';
 
 interface ServiceCardProps {
   title: string;
@@ -107,33 +107,47 @@ const ServicesSection = () => {
           />
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <ServiceCard
-            title="Custom Minecraft Plugins"
-            description="Bespoke plugins developed specifically for your server needs. From gameplay mechanics to administration tools, I create solutions that enhance player experience."
-            icon={<Puzzle size={24} className="text-minecraft-purple" />}
+            title="Minecraft Server Setup"
+            description="Complete server setup from scratch, including configuration, plugin installation, and optimization for different server types like SMP, Factions, or Skyblock."
+            icon={<Server size={24} className="text-minecraft-purple" />}
             delay={100}
           />
           
           <ServiceCard
-            title="Minecraft Server Setup"
-            description="Complete server configuration including performance optimization, plugin integration, and security hardening. Get your Minecraft server up and running with professional setup."
-            icon={<Server size={24} className="text-minecraft-purple" />}
+            title="Plugin Configuration"
+            description="Expert configuration of plugins to work seamlessly together, creating a balanced and engaging player experience with custom features."
+            icon={<Puzzle size={24} className="text-minecraft-purple" />}
             delay={200}
+          />
+          
+          <ServiceCard
+            title="Performance Tuning"
+            description="Optimize your server for maximum performance with minimal lag, even with high player counts. Includes TPS optimization, memory management, and chunk loading improvements."
+            icon={<Zap size={24} className="text-minecraft-purple" />}
+            delay={300}
+          />
+          
+          <ServiceCard
+            title="Bug Fixing & Troubleshooting"
+            description="Diagnose and resolve server crashes, plugin conflicts, and performance issues. Complete analysis with practical solutions to keep your server running smoothly."
+            icon={<Bug size={24} className="text-minecraft-purple" />}
+            delay={400}
+          />
+
+          <ServiceCard
+            title="Custom Server Types"
+            description="Specialized setups for various server types including Factions, Skyblock, Survival Games, and more - with tailored plugins and configurations for each."
+            icon={<Shield size={24} className="text-minecraft-purple" />}
+            delay={500}
           />
           
           <ServiceCard
             title="Web Dashboard Development"
             description="Custom web interfaces for your Minecraft server. Player stats, shop systems, and admin panels built with modern technologies for a seamless user experience."
             icon={<Globe size={24} className="text-minecraft-purple" />}
-            delay={300}
-          />
-          
-          <ServiceCard
-            title="Website Design & Development"
-            description="Responsive, fast, and visually appealing websites built with modern frameworks. Whether you need a simple landing page or a complex web application, I deliver clean and efficient solutions."
-            icon={<Code size={24} className="text-minecraft-purple" />}
-            delay={400}
+            delay={600}
           />
         </div>
       </div>

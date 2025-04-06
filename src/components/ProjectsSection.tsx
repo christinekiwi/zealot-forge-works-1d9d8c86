@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { Server, Shield, ShoppingCart, Zap } from 'lucide-react';
+import { Server, Shield, ShoppingCart, Zap, Settings, Lock, PlugZap } from 'lucide-react';
 
 interface ProjectCardProps {
   title: string;
@@ -87,14 +87,29 @@ const ProjectsSection = () => {
       icon: <Server size={20} className="text-minecraft-purple" />
     },
     {
-      title: "Shop Survival Configuration",
+      title: "Shop & Economy Configuration",
       description: "Comprehensive shop system with dynamic pricing, custom GUI interfaces, and seamless integration with server economy for a balanced player experience.",
       icon: <ShoppingCart size={20} className="text-minecraft-purple" />
     },
     {
-      title: "Optimization & Performance",
+      title: "Server Optimization",
       description: "Server performance enhancement package with lag elimination, TPS optimization, and memory management for smooth gameplay even with high player counts.",
       icon: <Zap size={20} className="text-minecraft-purple" />
+    },
+    {
+      title: "Custom Plugin Tweaks",
+      description: "Modifications and customizations to existing plugins to create unique features and gameplay mechanics tailored to your server's specific needs.",
+      icon: <Settings size={20} className="text-minecraft-purple" />
+    },
+    {
+      title: "Permissions Setup",
+      description: "Comprehensive permissions configuration with role-based access control, ensuring server security while providing appropriate access to staff and players.",
+      icon: <Lock size={20} className="text-minecraft-purple" />
+    },
+    {
+      title: "Performance Improvements",
+      description: "Advanced performance analysis and optimization to reduce lag, improve server stability, and enhance overall player experience during peak hours.",
+      icon: <PlugZap size={20} className="text-minecraft-purple" />
     }
   ];
 
@@ -127,7 +142,7 @@ const ProjectsSection = () => {
           />
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <ProjectCard 
               key={index}
