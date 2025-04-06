@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { Server, PuzzlePiece, Globe, Code } from 'lucide-react';
+import { Server, Puzzle, Globe, Code } from 'lucide-react';
 
 interface ServiceCardProps {
   title: string;
@@ -102,7 +102,7 @@ const ServicesSection = () => {
           <ServiceCard
             title="Custom Minecraft Plugins"
             description="Bespoke plugins developed specifically for your server needs. From gameplay mechanics to administration tools, I create solutions that enhance player experience."
-            icon={<PuzzlePiece size={24} className="text-minecraft-purple" />}
+            icon={<Puzzle size={24} className="text-minecraft-purple" />}
             delay={100}
           />
           
