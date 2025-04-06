@@ -132,15 +132,15 @@ const PortfolioSection = () => {
     <section
       id="portfolio"
       ref={sectionRef}
-      className="py-24 px-6 md:px-12 opacity-0"
+      className="py-12 sm:py-16 px-6 md:px-12 opacity-0"
       style={{ transitionDelay: '100ms' }}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-12">
           <div className="inline-block px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-4">
             <p className="text-sm font-medium text-white/80">Portfolio</p>
           </div>
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-4">
             My Recent <span className="text-minecraft-purple">Projects</span>
           </h2>
           <p className="text-white/70 max-w-2xl mx-auto">
@@ -186,7 +186,7 @@ const PortfolioSection = () => {
             className="absolute inset-0"
             onClick={closeProjectModal}
           ></div>
-          <div className="relative bg-minecraft-black border border-white/10 rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto animate-fade-in">
+          <div className="relative bg-gray-800 border border-white/10 rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto animate-fade-in">
             <button
               onClick={closeProjectModal}
               className="absolute top-4 right-4 p-2 text-white/70 hover:text-white bg-white/5 hover:bg-white/10 rounded-full transition-colors"

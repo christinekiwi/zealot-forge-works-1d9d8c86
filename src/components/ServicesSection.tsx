@@ -81,11 +81,11 @@ const ServicesSection = () => {
     <section
       id="services"
       ref={sectionRef}
-      className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 opacity-0 relative overflow-hidden"
+      className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 opacity-0 relative overflow-hidden"
       style={{ transitionDelay: '100ms' }}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-8 sm:mb-12">
           <div className="inline-block px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-4">
             <p className="text-sm font-medium text-white/80">Services</p>
           </div>
@@ -96,15 +96,6 @@ const ServicesSection = () => {
             Specialized services for Minecraft development and modern web solutions,
             tailored to your specific needs and requirements.
           </p>
-        </div>
-
-        {/* 3D Anime Character */}
-        <div className="absolute right-0 top-1/4 md:right-10 md:top-1/3 w-20 h-20 sm:w-32 sm:h-32 md:w-48 md:h-48 opacity-80 animate-float">
-          <img 
-            src="/lovable-uploads/1eec3168-70f3-4c28-88eb-b259b1fa78f4.png" 
-            alt="Anime character" 
-            className="w-full h-full object-contain"
-          />
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">

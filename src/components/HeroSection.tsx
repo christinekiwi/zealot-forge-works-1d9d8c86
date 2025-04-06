@@ -1,15 +1,7 @@
 
-import { ArrowDown } from 'lucide-react';
 import ParticleBackground from './ParticleBackground';
 
 const HeroSection = () => {
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-16 sm:pt-24 px-4 sm:px-6 md:px-12">
       <ParticleBackground />
@@ -58,26 +50,6 @@ const HeroSection = () => {
               See Services
             </a>
           </div>
-
-          {/* 3D Anime Character */}
-          <div className="absolute right-4 bottom-1/4 sm:right-8 md:right-16 lg:right-24 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 opacity-80 animate-float">
-            <img 
-              src="/lovable-uploads/9ff5a1ad-0fe7-425d-8b77-f4fd76fd3d08.png" 
-              alt="Anime character" 
-              className="w-full h-full object-contain"
-            />
-          </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-float">
-          <span className="text-white/50 text-sm mb-2">Scroll Down</span>
-          <button 
-            onClick={scrollToAbout}
-            className="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all"
-            aria-label="Scroll down"
-          >
-            <ArrowDown size={20} className="text-white/70" />
-          </button>
         </div>
       </div>
     </section>
